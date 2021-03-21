@@ -1,0 +1,146 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	background-color: #cdcdcd;
+	font-size: 16px;
+}
+.main{
+	width: 3.75rem;
+	height: 0.5rem;
+}
+.main>.header{
+	display: flex;
+	justify-content: space-between;
+	height: 0.5rem;
+	background-color: #323232;	
+}
+.main>.header>.logo{
+	flex: 2;
+	margin: 0 0.1rem;
+	color: #DDD;
+	line-height: 0.5rem;
+	font-size: 24px;
+}
+.doing{
+	padding: 0.2rem 0.1rem;
+}
+.doing>.doingHeader{
+	display: flex;
+	justify-content: space-between;
+	
+}
+.doing>.doingHeader>.doingNum{
+	width: 20px;
+	height: 20px;
+	background-color: #e6e6fa;
+	border-radius: 20px;
+	text-align: center;
+	color: #666;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 20px;
+}
+.doing>.doingList>.doingItem{
+	display: flex;
+	align-items: center;
+	height: 0.32rem;
+	line-height: 0.32rem;
+	border-radius: 0.05rem;
+	background-color: white;
+	margin: 0.2rem 0 0 0;
+}
+.doing>.doingList>.doingItem:before{
+	content: '';
+	background-color: #629A9C;
+	width: 0.05rem;
+	height: 0.32rem;
+	border-radius: 0.05rem 0 0 0.05rem;
+}
+.doing>.doingList>.doingItem>input{
+	height: 0.22rem;
+	width: 0.22rem;
+	margin: 0 0.15rem;
+}
+.doing>.doingList>.doingItem>.content{
+	width: 2.5rem;
+}
+.doing>.doingList>.doingItem>.del{
+	float: right;
+	color: red;
+}
+.done{
+	padding: 0.2rem 0.1rem;
+}
+.done>.doneHeader{
+	display: flex;
+	justify-content: space-between;
+}
+.done>.doneHeader>.doneNum{
+	width: 0.2rem;
+	height: 0.2rem;
+	background-color: #e6e6fa;
+	border-radius: 0.2rem;
+	text-align: center;
+	color: #666;
+	font-size: 14px;
+	font-weight: 600;
+}
+.done>.doneList>.doneItem{
+	display: flex;
+	align-items: center;
+	height: 0.32rem;
+	line-height: 0.32rem;
+	border-radius: 0.05rem;
+	background-color: white;
+	margin: 0.2rem 0 0 0;
+	opacity: 0.3;
+}
+.done>.doneList>.doneItem:before{
+	content: '';
+	background-color: #999;
+	width: 0.05rem;
+	height: 0.32rem;
+	border-radius: 0.05rem 0 0 0.05rem;
+}
+.done>.doneList>.doneItem>input{
+	height: 0.22rem;
+	width: 0.22rem;
+	margin: 0 0.15rem;
+}
+.done>.doneList.doneItem>.del{
+	color: red;
+}
+.done>.doneList>.doneItem>.content{
+	width: 2.5rem;
+}
+.footer{
+	text-align: center;
+	color: #666666;
+}
+/* .doing>.doneList>.doneItem>.del{
+	float: right;
+} */
+/* .main{
+	width: 600px;
+	margin: 0 auto;
+	
+}
+.main>.header{
+	display: flex;
+	justify-content: space-between;
+	height: 50px;
+	background-color: #323232;
+}
+.main>.header>.logo{
+	flex: 2;
+	color: #DDD;
+	line-height: 50px;
+	font-size: 24px;
+} */
+/* .main>.header>.input{
+	flex: 6;
+	height: 26px;
+} */

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>ToDoList--最简单的待办事项</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+	<body>
+		<div class="main">
+			<div class="header">
+				<div class="logo">ToDoList</div>
+				<!-- <div class="input"> -->
+				<input type="text" name="" id="" value="" placeholder="添加ToDo" style="width: 2.1rem;height: 0.26rem;border-radius: 0.07rem;text-indent: 1em;margin: 0.12rem 0.1rem;">
+			</div>
+			<div class="doing">
+				<div class="doingHeader">
+					<h2 class="title">正在进行</h2>
+					<span class="doingNum">0</span>
+				</div>
+				<div class="doingList">
+					<!-- <div class="doingItem">
+						<input type="checkbox" name="" id="" value="" />
+						<div class="content">jjjjsdgsj</div>
+						<div class="del">删除</div>
+					</div> -->
+				</div>
+			</div>
+			<div class="done">
+				<div class="doneHeader">
+					<h2 class="title">已经完成</h2>
+					<span class="doneNum">0</span>
+				</div>
+				<div class="doneList">
+					<!-- <div class="doneItem">
+						<input type="checkbox" name="" id="" value="" checked="checked"/>
+						<div class="content">jjjjsdgsj</div>
+						<div class="del">删除</div>
+					</div> -->
+				</div>
+			</div>
+			<div class="footer">
+				yj © 2021
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			window.onresize = function() {
+				setRem();
+			}
+
+			function setRem() {
+				var w = window.innerWidth;
+				var rem = w / 3.75;
+				var html = document.querySelector('html');
+				html.style.fontSize = rem + 'px';
+			}
+			setRem();
+			if (localStorage.list == undefined) {
+				var list = [];
+			} else {
+				var list = JSON.parse(localStorage.list);
+			}
+			var inp = document.querySelector('.header input');
+			var doingList = document.querySelector('.doingList');
+			var doneList = document.querySelector('.doneList');
+			var doingNum = document.querySelector('.doingNum');
+			var doneNum = document.querySelector('.doneNum');
+			var n = 0,
+				m = 0;
+			var main = document.querySelector('.main');
+
+			inp.onkeydown = function(e) {
+				if (e.key == "Enter") {
+					// console.log(e);
+					var value = inp.value;
+					// console.log(value);
+					var listObj = {
+						content: value,
+						isChecked: false
+					}
+					list.push(listObj);
+					inp.value = '';
+				}
+				// console.log(list);
+				render(list);
+			}
+			doingList.onchange = function(e) {
+				console.log(e);
+				var index1 = parseInt(e.target.dataset.index);
+				console.log(index1);
+				list[index1].isChecked = true;
+				render(list);
+			}
+			doneList.onchange = function(e) {
+				var index2 = parseInt(e.target.dataset.index);
+				console.log(index2);
+				list[index2].isChecked = false;
+				render(list);
+			}
+			main.onclick = function(e) {
+				// console.log(e.target.dataset);
+				if (e.target.className == 'del') {
+					var del = e.target.dataset.del;
+					list.splice(del, 1);
+					render(list);
+				}
+
+			}
+			render(list);
+
+			function render(value) {
+				localStorage.list = JSON.stringify(list);
+				doingList.innerHTML = '';
+				doneList.innerHTML = '';
+				n = 0;
+				m = 0;
+				value.forEach((v, i) => {
+					var d = document.createElement('div');
+					// console.log(v)
+					if (!v.isChecked) {
+						// var d = document.createElement('div');
+						n++;
+						d.className = 'doingItem';
+						d.innerHTML =
+							`
+						<input type="checkbox" name="" id="" value="" data-index=${i} />
+						<div class="content">` +
+							v.content + `</div>
+						<div class="del" data-del=${i}>删除</div>`
+						doingList.appendChild(d);
+					} else {
+						m++;
+						d.className = 'doneItem';
+						d.innerHTML =
+							`
+						<input type="checkbox" name="" id="" value="" checked="checked" data-index=${i} />
+						<div class="content">` +
+							v.content + `</div>
+						<div class="del" data-del=${i}>删除</div>`
+						doneList.appendChild(d);
+					}
+					doingNum.innerText = n;
+					doneNum.innerText = m;
+				})
+
+			}
+		</script>
+	</body>
+</html>
